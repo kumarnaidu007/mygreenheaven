@@ -1,16 +1,18 @@
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: 10;
   border-bottom: 1px solid var(--color-border);
-  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
   backdrop-filter: blur(10px);
 }
 
 .inner {
-  width: min(1100px, calc(100% - 2rem));
-  margin: 0 auto;
-  min-height: 4rem;
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 0.25rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,15 +20,125 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  min-width: 0;
   color: var(--color-text);
   font-weight: 700;
   letter-spacing: -0.02em;
   text-decoration: none;
 }
 
+.logo {
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+}
+
+.brandContent {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.1rem;
+}
+
+.wordmark {
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.wordmark span {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.ornament {
+  display: grid;
+  grid-template-columns: 1fr 0.42rem 1fr;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary)
+  );
+}
+
+.line:last-child {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    transparent
+  );
+}
+
+.dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
 .nav {
   display: flex;
   gap: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .inner {
+    padding-inline: 0.75rem;
+  }
+
+  .brand {
+    gap: 0.1rem;
+  }
+
+  .logo {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .wordmark {
+    font-size: 1.2rem;
+  }
+
+  .ornament {
+    grid-template-columns: 1fr 0.34rem 1fr;
+    gap: 0.4rem;
+  }
+
+  .dot {
+    width: 0.34rem;
+    height: 0.34rem;
+  }
+
+  .nav {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .inner {
+    padding-inline: 0.5rem;
+  }
+
+  .logo {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .wordmark {
+    font-size: 1.05rem;
+  }
 }
 
 .link {
