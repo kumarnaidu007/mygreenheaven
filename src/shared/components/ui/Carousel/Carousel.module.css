@@ -1,0 +1,159 @@
+.carousel {
+  position: relative;
+  min-width: 0;
+  min-height: calc(100svh - 6.75rem);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.slides,
+.slide {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 600ms ease,
+    visibility 600ms ease;
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(2 7 4 / 88%) 0%, rgb(2 7 4 / 52%) 44%, transparent 76%),
+    linear-gradient(0deg, rgb(2 7 4 / 38%), transparent 40%);
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: clamp(1.5rem, 5vw, 4rem);
+  width: min(28rem, calc(100% - 3rem));
+  transform: translateY(-50%);
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: #b9dc5a;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.7rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+  text-shadow: 0 0.6rem 1.8rem rgb(0 0 0 / 65%);
+}
+
+.content > p:not(.eyebrow) {
+  max-width: 25rem;
+  margin: 1rem 0 1.4rem;
+  color: #c7d1ca;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.content a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.65rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  color: #08100b;
+  background: #a8c94f;
+  font-weight: 750;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.content a:hover {
+  background: #b9dc5a;
+  transform: translateY(-1px);
+}
+
+.indicators {
+  position: absolute;
+  bottom: 1.35rem;
+  left: 50%;
+  display: flex;
+  gap: 0.45rem;
+  transform: translateX(-50%);
+}
+
+.indicators button {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 45%);
+  cursor: pointer;
+  transition:
+    width 180ms ease,
+    background-color 180ms ease;
+}
+
+.indicators .current {
+  width: 1.5rem;
+  background: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .content a,
+  .indicators button {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel {
+    min-height: 28rem;
+  }
+
+  .overlay {
+    background: linear-gradient(90deg, rgb(2 7 4 / 88%), rgb(2 7 4 / 42%));
+  }
+
+  .content {
+    top: 46%;
+    left: 1.25rem;
+    width: calc(100% - 2.5rem);
+  }
+
+  .content h1 {
+    font-size: clamp(1.9rem, 10vw, 2.7rem);
+  }
+
+  .content > p:not(.eyebrow) {
+    font-size: 0.9rem;
+  }
+
+  .indicators {
+    bottom: 1.1rem;
+    left: 1.25rem;
+    transform: none;
+  }
+}

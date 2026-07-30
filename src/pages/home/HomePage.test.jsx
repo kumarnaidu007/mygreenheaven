@@ -1,11 +1,16 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { HomePage } from '@/pages/home'
 
 describe('HomePage', () => {
-  it('renders an empty page', () => {
-    const { container } = render(<HomePage />)
+  it('renders plant categories and featured content', () => {
+    render(<HomePage />)
 
-    expect(container).toBeEmptyDOMElement()
+    expect(
+      screen.getByRole('heading', { name: /why choose mygreenheaven\.in/i }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /bring nature home/i }),
+    ).toBeInTheDocument()
   })
 })
