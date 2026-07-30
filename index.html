@@ -2,13 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="64x64"
+      href="/favicon.png?v=2"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07100b" />
+    <script>
+      ;(() => {
+        const savedTheme = localStorage.getItem('mygreenheaven-theme')
+        const preferredTheme = matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light'
+          : 'dark'
+        document.documentElement.dataset.theme =
+          savedTheme === 'light' || savedTheme === 'dark'
+            ? savedTheme
+            : preferredTheme
+      })()
+    </script>
     <meta
       name="description"
-      content="My Green Heaven — a production-ready React application."
+      content="mygreenheaven.in — plants, care, and greenery for every space."
     />
-    <title>My Green Heaven</title>
+    <title>mygreenheaven.in | Plants &amp; Care</title>
   </head>
   <body>
     <div id="root"></div>
