@@ -14,8 +14,6 @@ const featuredSlides = [
     title: 'Bring nature home',
     description:
       'Discover healthy, handpicked indoor plants selected to thrive in your space.',
-    actionLabel: 'Explore indoor plants',
-    actionHref: '#indoor-plants',
   },
   {
     id: 'plant-care',
@@ -25,8 +23,6 @@ const featuredSlides = [
     title: 'Plant care, made simple',
     description:
       'Get professional guidance, repotting, and maintenance for happier plants.',
-    actionLabel: 'View plant services',
-    actionHref: '#plant-services',
   },
   {
     id: 'planters',
@@ -36,8 +32,6 @@ const featuredSlides = [
     title: 'Pots and essentials',
     description:
       'Find considered planters, tools, and care essentials for every plant.',
-    actionLabel: 'Shop accessories',
-    actionHref: '#planters-&-pots',
   },
 ]
 

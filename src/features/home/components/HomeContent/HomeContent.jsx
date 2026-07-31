@@ -5,6 +5,8 @@ import appImage from '@/assets/home/plant-app.webp'
 import plantCareImage from '@/assets/home/plant-care.webp'
 import giftingImage from '@/assets/home/plant-gifting.webp'
 import plantersImage from '@/assets/home/planters-accessories.webp'
+import { ConsultationForm } from '@/features/home/components/ConsultationForm'
+import { CONSULTATION_SECTION_ID } from '@/shared/constants/sections'
 import styles from './HomeContent.module.css'
 
 const reasons = [
@@ -226,7 +228,6 @@ export function HomeContent() {
               <img src={product.image} alt={product.alt} loading="lazy" />
               <div>
                 <h3>{product.title}</h3>
-                <a href="#shop">Shop now <span aria-hidden="true">→</span></a>
               </div>
             </article>
           ))}
@@ -244,7 +245,6 @@ export function HomeContent() {
             <div>
               <h3>Plant Parenting & Care</h3>
               <p>Fertilizers, plant food, watering tools, and expert support.</p>
-              <a href="#plant-care">View all <span aria-hidden="true">→</span></a>
             </div>
           </article>
           <article id="planters-&-pots">
@@ -252,7 +252,6 @@ export function HomeContent() {
             <div>
               <h3>Pots & Customizable Pots</h3>
               <p>Decorative, self-watering, and personalized options.</p>
-              <a href="#planters-&-pots">View all <span aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
@@ -265,7 +264,6 @@ export function HomeContent() {
             title="Grow-Your-Own Seeds"
             description="From fresh tomato and spinach to fragrant basil, discover easy-to-grow seeds for your balcony or backyard."
           />
-          <a className={styles.textLink} href="#seeds">View all seeds <span aria-hidden="true">→</span></a>
         </div>
         <div className={styles.seedList} id="seeds">
           {seeds.map((seed, index) => (
@@ -289,7 +287,6 @@ export function HomeContent() {
             <div>
               <p>Plant care · 6 min read</p>
               <h3>5 Low-Maintenance Plants for Busy Professionals</h3>
-              <a href="#blog">Read full guide <span aria-hidden="true">→</span></a>
             </div>
           </article>
           <article>
@@ -297,7 +294,6 @@ export function HomeContent() {
             <div>
               <p>Growing · 8 min read</p>
               <h3>The Ultimate Guide to Growing Fresh Herbs at Home</h3>
-              <a href="#blog">Read full guide <span aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
@@ -311,10 +307,13 @@ export function HomeContent() {
         <blockquote>
           “Our balcony feels like a mini forest now—so relaxing after work!”
         </blockquote>
-        <a className={styles.textLink} href="#stories">View all growing stories <span aria-hidden="true">→</span></a>
       </section>
 
-      <section className={`${styles.section} ${styles.consultation}`} id="book-consultation" aria-labelledby="consultation-title">
+      <section
+        className={`${styles.section} ${styles.consultation}`}
+        id={CONSULTATION_SECTION_ID}
+        aria-labelledby="consultation-title"
+      >
         <div>
           <SectionHeading
             eyebrow="Let’s grow together"
@@ -322,25 +321,7 @@ export function HomeContent() {
             description="Share a few details and our team will get in touch to understand your space."
           />
         </div>
-        <form onSubmit={(event) => event.preventDefault()}>
-          <label>
-            Name
-            <input type="text" name="name" autoComplete="name" required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" autoComplete="email" required />
-          </label>
-          <label>
-            Mobile number
-            <input type="tel" name="phone" autoComplete="tel" required />
-          </label>
-          <label>
-            Tell us about your space
-            <textarea name="message" rows="3" />
-          </label>
-          <button type="submit">Book consultation</button>
-        </form>
+        <ConsultationForm />
       </section>
 
       <section className={`${styles.section} ${styles.appSection}`} aria-labelledby="app-title">
@@ -355,7 +336,7 @@ export function HomeContent() {
             <li>Smart watering and maintenance reminders</li>
             <li>Real-time delivery tracking</li>
           </ul>
-          <a className={styles.primaryLink} href="#download">Coming soon</a>
+          <span className={styles.badge}>Coming soon</span>
         </div>
         <img src={appImage} alt="mygreenheaven.in plant care app shown on a phone" loading="lazy" />
       </section>
@@ -373,13 +354,11 @@ export function HomeContent() {
               <span>01</span>
               <h3>Events</h3>
               <p>Living keepsakes for weddings, birthdays, and family milestones.</p>
-              <a href="#events">Explore event gifting <span aria-hidden="true">→</span></a>
             </article>
             <article>
               <span>02</span>
               <h3>Corporate Gifting</h3>
               <p>Sustainable gifts that reflect your values to clients and teams.</p>
-              <a href="#corporate">Explore corporate gifting <span aria-hidden="true">→</span></a>
             </article>
           </div>
         </div>
@@ -388,7 +367,7 @@ export function HomeContent() {
       <section className={styles.finalCta} aria-labelledby="final-cta-title">
         <p>Turning everyday spaces into greener homes with mygreenheaven.in.</p>
         <h2 id="final-cta-title">Ready to bring nature closer?</h2>
-        <a href="#book-consultation">Book consultation</a>
+        <a href={`#${CONSULTATION_SECTION_ID}`}>Book consultation</a>
       </section>
     </div>
   )

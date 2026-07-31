@@ -1,7 +1,7 @@
 .carousel {
   position: relative;
   min-width: 0;
-  min-height: calc(100svh - 6.75rem);
+  min-height: calc(100svh - 3.75rem);
   overflow: hidden;
   background: var(--color-surface);
 }
@@ -67,30 +67,10 @@
 
 .content > p:not(.eyebrow) {
   max-width: 25rem;
-  margin: 1rem 0 1.4rem;
+  margin: 1rem 0 0;
   color: #c7d1ca;
   line-height: 1.65;
   overflow-wrap: anywhere;
-}
-
-.content a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.65rem;
-  padding: 0.65rem 1.15rem;
-  border-radius: 999px;
-  color: #08100b;
-  background: #a8c94f;
-  font-weight: 750;
-  text-decoration: none;
-  transition:
-    background-color 160ms ease,
-    transform 160ms ease;
-}
-
-.content a:hover {
-  background: #b9dc5a;
-  transform: translateY(-1px);
 }
 
 .indicators {
@@ -122,7 +102,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .slide,
-  .content a,
   .indicators button {
     transition: none;
   }

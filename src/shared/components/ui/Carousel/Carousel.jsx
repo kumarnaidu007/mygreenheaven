@@ -55,12 +55,6 @@ export function Carousel({ slides = [], ariaLabel = 'Featured content' }) {
               <p className={styles.eyebrow}>{slide.eyebrow}</p>
               <h1>{slide.title}</h1>
               <p>{slide.description}</p>
-              <a
-                href={slide.actionHref}
-                tabIndex={index === activeIndex ? 0 : -1}
-              >
-                {slide.actionLabel}
-              </a>
             </div>
           </article>
         ))}
