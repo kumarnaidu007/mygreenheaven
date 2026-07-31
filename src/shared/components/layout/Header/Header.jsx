@@ -1,9 +1,7 @@
-import { useState } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useTheme } from '@/app/providers/theme'
 import logo from '@/assets/mygreenheaven-brand-leaf.png'
 import { APP_NAME } from '@/shared/constants/env'
-import { CONSULTATION_SECTION_ID } from '@/shared/constants/sections'
 import { ROUTES } from '@/shared/constants/routes'
 import styles from './Header.module.css'
 
@@ -22,57 +20,11 @@ function ThemeIcon({ isDark }) {
   )
 }
 
-function MenuIcon({ open }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      {open ? (
-        <>
-          <path d="m6 6 12 12" />
-          <path d="M18 6 6 18" />
-        </>
-      ) : (
-        <>
-          <path d="M4 7h16" />
-          <path d="M4 12h16" />
-          <path d="M4 17h16" />
-        </>
-      )}
-    </svg>
-  )
-}
-
-function scrollToConsultation() {
-  document
-    .getElementById(CONSULTATION_SECTION_ID)
-    ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { isDark, toggleTheme } = useTheme()
-  const navigate = useNavigate()
-  const location = useLocation()
-
-  const closeMenu = () => setIsMenuOpen(false)
 
   const handleLogoClick = () => {
-    closeMenu()
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const handleConsultationClick = (event) => {
-    event.preventDefault()
-    closeMenu()
-
-    if (location.pathname === ROUTES.HOME) {
-      scrollToConsultation()
-      return
-    }
-
-    navigate(ROUTES.HOME)
-    window.requestAnimationFrame(() =>
-      window.requestAnimationFrame(scrollToConsultation),
-    )
   }
 
   return (
@@ -97,43 +49,15 @@ export function Header() {
           </span>
         </NavLink>
 
-        <nav
-          id="primary-navigation"
-          className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}
-          aria-label="Primary navigation"
+        <button
+          className={styles.themeButton}
+          type="button"
+          aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+          title={isDark ? 'Light theme' : 'Dark theme'}
+          onClick={toggleTheme}
         >
-          <NavLink to={ROUTES.HOME} end onClick={closeMenu}>
-            Home
-          </NavLink>
-          <a
-            href={`#${CONSULTATION_SECTION_ID}`}
-            onClick={handleConsultationClick}
-          >
-            Book Consultation
-          </a>
-        </nav>
-
-        <div className={styles.actions}>
-          <button
-            className={`${styles.actionButton} ${styles.themeButton}`}
-            type="button"
-            aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            title={isDark ? 'Light theme' : 'Dark theme'}
-            onClick={toggleTheme}
-          >
-            <ThemeIcon isDark={isDark} />
-          </button>
-          <button
-            className={`${styles.actionButton} ${styles.menuButton}`}
-            type="button"
-            aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
-            aria-expanded={isMenuOpen}
-            aria-controls="primary-navigation"
-            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
-          >
-            <MenuIcon open={isMenuOpen} />
-          </button>
-        </div>
+          <ThemeIcon isDark={isDark} />
+        </button>
       </div>
     </header>
   )

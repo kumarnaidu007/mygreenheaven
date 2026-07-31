@@ -1,0 +1,122 @@
+.actions {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.75rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.instagram,
+.consultation {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 3.35rem;
+  height: 3.35rem;
+  border-radius: 50%;
+  color: #ffffff;
+  text-decoration: none;
+  animation: blink 1.6s ease-in-out infinite;
+  transition: transform 180ms ease;
+}
+
+.instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #8134af);
+  box-shadow: 0 0.85rem 1.75rem rgb(221 42 123 / 38%);
+}
+
+.consultation {
+  color: var(--color-on-primary);
+  background: linear-gradient(135deg, #a8c94f, var(--color-primary));
+  box-shadow: 0 0.85rem 1.75rem var(--color-shadow);
+  animation-delay: 0.8s;
+}
+
+.instagram:hover,
+.consultation:hover {
+  animation-play-state: paused;
+  opacity: 1;
+  transform: translateY(-0.15rem) scale(1.05);
+}
+
+.instagram svg,
+.consultation svg {
+  width: 1.7rem;
+  height: 1.7rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.pulse {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse 1.6s ease-out infinite;
+}
+
+.consultation .pulse {
+  animation-delay: 0.8s;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@media (max-width: 600px) {
+  .actions {
+    gap: 0.6rem;
+  }
+
+  .instagram,
+  .consultation {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .instagram svg,
+  .consultation svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instagram,
+  .consultation,
+  .pulse {
+    animation: none;
+  }
+
+  .instagram:hover,
+  .consultation:hover {
+    transform: none;
+  }
+}

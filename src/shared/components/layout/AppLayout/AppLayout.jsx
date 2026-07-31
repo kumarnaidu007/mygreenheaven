@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { Footer } from '@/shared/components/layout/Footer'
 import { Header } from '@/shared/components/layout/Header'
-import { InstagramButton } from '@/shared/components/ui/InstagramButton'
+import { FloatingActions } from '@/shared/components/ui/FloatingActions'
 import styles from './AppLayout.module.css'
 
 export function AppLayout() {
@@ -12,7 +12,7 @@ export function AppLayout() {
         <Outlet />
       </main>
       <Footer />
-      <InstagramButton />
+      <FloatingActions />
     </div>
   )
 }
