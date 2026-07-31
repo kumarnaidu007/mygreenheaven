@@ -7,31 +7,34 @@ import { HomePage } from '@/pages/home'
 import { NotFoundPage } from '@/pages/not-found'
 import { ServicesPage } from '@/pages/services'
 
-export const router = createBrowserRouter([
-  {
-    path: ROUTES.HOME,
-    element: <AppLayout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: ROUTES.BOOK_CONSULTATION,
-        element: <BookConsultationPage />,
-      },
-      {
-        path: ROUTES.SERVICES,
-        element: <ServicesPage />,
-      },
-      {
-        path: ROUTES.CONTACT,
-        element: <ContactPage />,
-      },
-      {
-        path: ROUTES.NOT_FOUND,
-        element: <NotFoundPage />,
-      },
-    ],
-  },
-])
+export const router = createBrowserRouter(
+  [
+    {
+      path: ROUTES.HOME,
+      element: <AppLayout />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: ROUTES.BOOK_CONSULTATION,
+          element: <BookConsultationPage />,
+        },
+        {
+          path: ROUTES.SERVICES,
+          element: <ServicesPage />,
+        },
+        {
+          path: ROUTES.CONTACT,
+          element: <ContactPage />,
+        },
+        {
+          path: ROUTES.NOT_FOUND,
+          element: <NotFoundPage />,
+        },
+      ],
+    },
+  ],
+  { basename: import.meta.env.BASE_URL },
+)

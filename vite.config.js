@@ -5,8 +5,13 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+// GitHub Pages serves this project from /<repository>/, so built asset URLs
+// need that prefix. Override with VITE_BASE_PATH when using a custom domain.
+const BASE_PATH = process.env.VITE_BASE_PATH || '/mygreenheaven/'
+
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? BASE_PATH : '/',
   plugins: [react({ jsxRuntime: 'automatic' })],
   oxc: {
     jsx: {
@@ -60,4 +65,4 @@ export default defineConfig({
     setupFiles: './src/test/setup.js',
     css: true,
   },
-})
+}))
