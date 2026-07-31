@@ -9,21 +9,25 @@ import styles from './HomeContent.module.css'
 
 const reasons = [
   {
+    icon: 'care',
     title: 'Easy Maintenance',
     description:
       'Self-watering systems and regular check-ins keep your plants healthy and thriving.',
   },
   {
+    icon: 'eco',
     title: 'Eco-Friendly Design',
     description:
       'Low-water plants, natural pots, and considered materials put the planet first.',
   },
   {
+    icon: 'tailored',
     title: 'Tailored to Your Space',
     description:
       'From balconies to quiet corners, every design fits your lifestyle and personality.',
   },
   {
+    icon: 'support',
     title: 'Ongoing Support',
     description:
       'Our subscription care model keeps your plants fresh long after installation.',
@@ -93,6 +97,41 @@ const products = [
 
 const seeds = ['Tomato', 'Cucumber', 'Basil', 'Marigold', 'Spinach']
 
+function ReasonIcon({ type }) {
+  const paths = {
+    care: (
+      <>
+        <path d="M12 3.5C9 7.3 6.5 10 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 10 15 7.3 12 3.5Z" />
+        <path d="m9.5 13.5 1.7 1.7 3.6-3.7" />
+      </>
+    ),
+    eco: (
+      <>
+        <path d="M19.5 4.5C11 4.5 6 8.1 6 13.4c0 3.1 2.2 5.1 5.2 5.1 5.2 0 8.3-5 8.3-14Z" />
+        <path d="M4.5 20c2.2-4.8 5.8-8.2 10.5-10.5" />
+      </>
+    ),
+    tailored: (
+      <>
+        <path d="M5 8V5h3M16 5h3v3M19 16v3h-3M8 19H5v-3" />
+        <path d="M12 8.5c-2.1 2.5-3.3 4-3.3 5.7a3.3 3.3 0 0 0 6.6 0c0-1.7-1.2-3.2-3.3-5.7Z" />
+      </>
+    ),
+    support: (
+      <>
+        <path d="M4.5 12a7.5 7.5 0 0 1 15 0v4" />
+        <path d="M4.5 12v3a2 2 0 0 0 2 2h1v-6h-1a2 2 0 0 0-2 1ZM19.5 12v3a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 1ZM16.5 17c0 2-1.5 3-4.5 3" />
+      </>
+    ),
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      {paths[type]}
+    </svg>
+  )
+}
+
 function SectionHeading({ eyebrow, title, description, centered = false }) {
   return (
     <header className={`${styles.sectionHeading} ${centered ? styles.centered : ''}`}>
@@ -114,9 +153,11 @@ export function HomeContent() {
           centered
         />
         <div className={styles.reasonGrid}>
-          {reasons.map((reason, index) => (
+          {reasons.map((reason) => (
             <article key={reason.title} className={styles.reason}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
+              <span className={styles.reasonIcon}>
+                <ReasonIcon type={reason.icon} />
+              </span>
               <h3>{reason.title}</h3>
               <p>{reason.description}</p>
             </article>

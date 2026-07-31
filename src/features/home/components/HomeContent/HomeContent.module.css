@@ -68,20 +68,70 @@
 .reasonGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.5vw, 1.25rem);
 }
 
 .reason {
-  min-height: 15rem;
-  padding: 1.75rem;
-  border-top: 1px solid var(--color-border);
-  border-right: 1px solid var(--color-border);
+  position: relative;
+  min-height: 13rem;
+  overflow: hidden;
+  padding: clamp(1.35rem, 2vw, 1.75rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
-.reason:last-child {
-  border-right: 0;
+.reason::after {
+  position: absolute;
+  inset: auto 1.5rem 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0;
+  content: '';
+  transition: opacity 180ms ease;
 }
 
-.reason > span,
+.reason:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 48%, var(--color-border));
+  box-shadow: 0 1rem 2.5rem var(--color-shadow);
+  transform: translateY(-0.3rem);
+}
+
+.reason:hover::after {
+  opacity: 1;
+}
+
+.reasonIcon {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+  border: 1px solid #c5e568;
+  border-radius: 50%;
+  color: #07100b;
+  background: #a8c94f;
+  box-shadow:
+    0 0 0 0.3rem color-mix(in srgb, #a8c94f 20%, transparent),
+    0 0 1.2rem color-mix(in srgb, #a8c94f 38%, transparent),
+    0 0.75rem 1.5rem var(--color-shadow);
+}
+
+.reasonIcon svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
 .giftOptions article > span {
   color: var(--color-primary);
   font-size: 0.72rem;
@@ -90,17 +140,26 @@
 }
 
 .reason h3 {
-  margin: 2.75rem 0 0.65rem;
-  font-size: 1.18rem;
+  margin: 1.5rem 0 0.6rem;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  text-align: center;
 }
 
 .reason p {
   margin: 0;
   color: var(--color-muted);
+  font-size: 0.92rem;
   line-height: 1.65;
+  text-align: center;
 }
 
 .softSection {
+  min-height: calc(100svh - 6.75rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(1.75rem, 4svh, 3.5rem);
   background:
     radial-gradient(circle at 50% 0%, rgb(140 171 62 / 10%), transparent 45%),
     var(--color-surface-alt);
@@ -108,8 +167,10 @@
 
 .benefitOrbit {
   position: relative;
+  width: 100%;
   max-width: 64rem;
-  min-height: 38rem;
+  height: clamp(20rem, 52svh, 27rem);
+  min-height: 20rem;
   margin: 0 auto;
 }
 
@@ -119,11 +180,11 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: space-between;
-  row-gap: 15rem;
+  row-gap: 9rem;
 }
 
 .benefitGrid article {
-  width: min(16rem, 100%);
+  width: min(14rem, 100%);
   text-align: center;
 }
 
@@ -133,34 +194,34 @@
 
 .benefitGrid article > span {
   display: inline-grid;
-  width: 4rem;
-  height: 4rem;
+  width: clamp(2.25rem, 5svh, 2.75rem);
+  height: clamp(2.25rem, 5svh, 2.75rem);
   place-items: center;
   border: 1px solid color-mix(in srgb, var(--color-primary) 38%, transparent);
   border-radius: 50%;
   color: var(--color-primary);
   background: var(--color-surface-strong);
   box-shadow: 0 0.75rem 1.8rem var(--color-shadow);
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .benefitGrid h3 {
-  margin: 1rem 0 0.45rem;
-  font-size: 1.1rem;
+  margin: clamp(0.55rem, 1.2svh, 0.8rem) 0 0.3rem;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
 }
 
 .benefitGrid p {
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: clamp(0.76rem, 1.1vw, 0.86rem);
+  line-height: 1.5;
 }
 
 .benefitVisual {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(18rem, 34vw, 27rem);
+  width: clamp(12rem, min(25vw, 31svh), 17rem);
   aspect-ratio: 1;
   overflow: hidden;
   border: 0.7rem solid var(--color-control-hover);
@@ -609,16 +670,9 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .reason:nth-child(2) {
-    border-right: 0;
-  }
-
-  .reason:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--color-border);
-  }
-
   .benefitOrbit {
-    min-height: 34rem;
+    height: clamp(20rem, 50svh, 25rem);
+    min-height: 20rem;
   }
 
   .benefitGrid article {
@@ -626,7 +680,7 @@
   }
 
   .benefitVisual {
-    width: 18rem;
+    width: clamp(12rem, min(27vw, 29svh), 15rem);
   }
 
   .blogGrid {
@@ -639,13 +693,18 @@
     padding-inline: clamp(1.25rem, 5vw, 2.5rem);
   }
 
+  .softSection {
+    min-height: auto;
+  }
+
   .productGrid {
     grid-template-columns: 1fr;
   }
 
   .benefitOrbit {
+    height: auto;
     min-height: auto;
-    padding-top: 21rem;
+    padding-top: clamp(14rem, 42vw, 17rem);
   }
 
   .benefitGrid {
@@ -662,7 +721,7 @@
 
   .benefitVisual {
     top: 0;
-    width: 18rem;
+    width: clamp(12rem, 36vw, 14.5rem);
     transform: translateX(-50%);
   }
 
@@ -716,16 +775,8 @@
     width: min(100%, 22rem);
   }
 
-  .reason,
-  .reason:nth-child(2),
-  .reason:last-child {
+  .reason {
     min-height: auto;
-    border-right: 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .reason h3 {
-    margin-top: 1.5rem;
   }
 
   .splitCards article {
@@ -769,6 +820,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reason {
+    transition: none;
+  }
+
+  .reason:hover {
+    transform: none;
+  }
+
   .productCard img {
     transition: none;
   }
