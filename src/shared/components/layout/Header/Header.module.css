@@ -175,8 +175,8 @@
 }
 
 @media (max-width: 900px) {
-  .brandContent {
-    display: none;
+  .wordmark {
+    font-size: 1.2rem;
   }
 }
 
@@ -233,6 +233,14 @@
     height: 2rem;
   }
 
+  .wordmark {
+    font-size: 1.05rem;
+  }
+
+  .ornament {
+    gap: 0.4rem;
+  }
+
   .actionButton {
     width: 2.25rem;
     height: 2.25rem;
@@ -247,6 +255,10 @@
   .logo {
     width: 1.75rem;
     height: 1.75rem;
+  }
+
+  .wordmark {
+    font-size: 0.92rem;
   }
 
   .inner {
