@@ -1,6 +1,6 @@
 .layout {
   width: 100vw;
-  min-height: calc(100svh - 6.75rem);
+  min-height: calc(100svh - 3.75rem);
   margin-top: -2rem;
   margin-bottom: -3rem;
   margin-left: calc(50% - 50vw);
@@ -10,11 +10,5 @@
   .layout {
     width: calc(100% + 2rem);
     margin-left: -1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .layout {
-    min-height: calc(100svh - 8.6rem);
   }
 }
