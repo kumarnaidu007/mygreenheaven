@@ -39,12 +39,33 @@
     linear-gradient(0deg, rgb(2 7 4 / 38%), transparent 40%);
 }
 
+.overlaySoft {
+  background: linear-gradient(
+    0deg,
+    rgb(2 7 4 / 74%) 0%,
+    rgb(2 7 4 / 34%) 26%,
+    transparent 50%
+  );
+}
+
 .content {
   position: absolute;
   top: 50%;
   left: clamp(1.5rem, 5vw, 4rem);
   width: min(28rem, calc(100% - 3rem));
   transform: translateY(-50%);
+}
+
+.contentBottom {
+  top: auto;
+  bottom: clamp(3.25rem, 7vh, 5rem);
+  width: min(34rem, calc(100% - 3rem));
+  transform: none;
+}
+
+.contentBottom .eyebrow {
+  margin-bottom: 0.45rem;
+  font-size: 0.68rem;
 }
 
 .eyebrow {
@@ -63,6 +84,12 @@
   letter-spacing: -0.04em;
   overflow-wrap: anywhere;
   text-shadow: 0 0.6rem 1.8rem rgb(0 0 0 / 65%);
+}
+
+.contentBottom h1 {
+  font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .content > p:not(.eyebrow) {
@@ -116,14 +143,33 @@
     background: linear-gradient(90deg, rgb(2 7 4 / 88%), rgb(2 7 4 / 42%));
   }
 
+  .overlaySoft {
+    background: linear-gradient(
+      0deg,
+      rgb(2 7 4 / 80%) 0%,
+      rgb(2 7 4 / 38%) 32%,
+      transparent 58%
+    );
+  }
+
   .content {
     top: 46%;
     left: 1.25rem;
     width: calc(100% - 2.5rem);
   }
 
+  .contentBottom {
+    top: auto;
+    bottom: 3rem;
+    width: calc(100% - 2.5rem);
+  }
+
   .content h1 {
     font-size: clamp(1.9rem, 10vw, 2.7rem);
+  }
+
+  .contentBottom h1 {
+    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
   }
 
   .content > p:not(.eyebrow) {

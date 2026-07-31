@@ -1,3 +1,4 @@
+import balconyMakeoverImage from '@/assets/home/balcony-makeover.jpg'
 import indoorPlantsImage from '@/assets/home/indoor-plants.webp'
 import plantCareImage from '@/assets/home/plant-care.webp'
 import plantersImage from '@/assets/home/planters-accessories.webp'
@@ -6,6 +7,16 @@ import { Carousel } from '@/shared/components/ui/Carousel'
 import styles from './HomePage.module.css'
 
 const featuredSlides = [
+  {
+    id: 'balcony-makeovers',
+    image: balconyMakeoverImage,
+    imageAlt:
+      'A balcony makeover with a vertical green wall, hanging planters, and a cosy seating corner',
+    eyebrow: 'Balcony makeovers',
+    title: 'Transforming spaces into green heavens',
+    contentPosition: 'bottom',
+    overlayTone: 'soft',
+  },
   {
     id: 'indoor-plants',
     image: indoorPlantsImage,

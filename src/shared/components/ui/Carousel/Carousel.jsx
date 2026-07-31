@@ -50,11 +50,19 @@ export function Carousel({ slides = [], ariaLabel = 'Featured content' }) {
               alt={slide.imageAlt}
               loading={index === 0 ? 'eager' : 'lazy'}
             />
-            <div className={styles.overlay} />
-            <div className={styles.content}>
+            <div
+              className={`${styles.overlay} ${
+                slide.overlayTone === 'soft' ? styles.overlaySoft : ''
+              }`}
+            />
+            <div
+              className={`${styles.content} ${
+                slide.contentPosition === 'bottom' ? styles.contentBottom : ''
+              }`}
+            >
               <p className={styles.eyebrow}>{slide.eyebrow}</p>
               <h1>{slide.title}</h1>
-              <p>{slide.description}</p>
+              {slide.description ? <p>{slide.description}</p> : null}
             </div>
           </article>
         ))}
